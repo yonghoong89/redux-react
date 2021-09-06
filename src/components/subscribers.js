@@ -2,11 +2,12 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { addSubscriber, removeSubscriber } from '../redux/subscribers/actions'
 
-const Subscribers = (props) => {
+const Subscribers = ({count,addSubscriber,removeSubscriber}) => {
   return (
     <div className="items">
-      <h2>구독자 수 : {props.count}</h2>
-      <button type="button" onClick={()=> props.addSubscriber()}>구독하기</button>
+      <h2>구독자 수 : {count}</h2>
+      <button type="button" onClick={()=> addSubscriber()}>구독하기</button>
+      <button type="button" onClick={()=> removeSubscriber()}>구독 취소하기</button>
     </div>
   )
 }
@@ -17,10 +18,9 @@ const mapStateToProps = (state) =>{
   }
 }
 
-const mapDispatchToProps = (dispatch) =>{
-  return {
-    addSubscriber: () => dispatch(addSubscriber())
-  }
+const mapDispatchToProps ={
+  addSubscriber,
+  removeSubscriber
 }
 
 export default connect(mapStateToProps,mapDispatchToProps)(Subscribers)
