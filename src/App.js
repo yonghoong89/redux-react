@@ -11,10 +11,10 @@ function App() {
     <Provider store={store}>
     {/* Provider 를 이용하여 props로 store를 넘겨받음 */}
     <div className="App">
-      <Comments />
       <Subscribers />
       <Views />
       <Display />
+      <Comments />
     </div>
     </Provider>
   );
