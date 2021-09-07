@@ -2,15 +2,25 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import {fetchComments} from '../redux'
 
-const Comments = ({fetchComments}) => {
+const Comments = ({fetchComments, loading, comments}) => {
 
   useEffect(()=>{
     fetchComments()
   }, [])
 
+  const commentsItmes = loading ? (<div>is loading...</div>) : (
+    comments.map((comment)=>(
+      <div key={comment.id}>
+        <p>{comment.name}</p>
+        <p>{comment.email}</p>
+        <p>{comment.body}</p>
+      </div>
+    ))
+  )
+
   return (
-    <div className="items">
-      
+    <div className="comments">
+      {commentsItmes}
     </div>
   )
 }
